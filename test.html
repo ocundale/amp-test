@@ -11,7 +11,7 @@ body {
 }
 #box {
   width: 198px;
-  height: 198px;
+  height: 98px;
   border: 2px solid #b60845;
   padding: 1rem;
   background: #ccc;
@@ -27,13 +27,13 @@ p {
     </div>
   <script>
 (function (d, w) {
+
   setTimeout(function(){
-      console.log('send resize post message!')
+    console.log('asd',document.body.scrollHeight)
     w.parent.postMessage({
       sentinel: 'amp',
       type: 'embed-size',
-      height: 10,
-      width: 40
+      height: document.body.scrollHeight
     }, '*');
   },5000);
 })(document, window);
