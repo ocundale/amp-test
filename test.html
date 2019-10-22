@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <link rel="stylesheet" href="https://ampbyexample.com/css/ampstart.css">
+    <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+#box {
+  width: 198px;
+  height: 198px;
+  border: 2px solid #b60845;
+  padding: 1rem;
+  background: #ccc;
+}
+p {
+  margin-top: 1rem;
+}
+    </style>
+  </head>
+  <body>
+    <div id="box">
+      <p id="message">Size: <span id="size">200x200</span></p>
+    </div>
+  <script>
+(function (d, w) {
+  setTimeout(function(){
+    w.parent.postMessage({
+      sentinel: 'amp',
+      type: 'embed-size',
+      height: 10,
+      width: 40
+    }, '*');
+  },4000);
+})(document, window);
+  </script>
+  </body>
+</html>

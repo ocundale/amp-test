@@ -22,13 +22,28 @@ limitations under the License.
   <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
   <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
   <script async src="https://cdn.ampproject.org/v0.js"></script>
-
+  <script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script>
+  <script async custom-element="amp-script" src="https://cdn.ampproject.org/v0/amp-script-0.1.js"></script>
   <!-- TODO: "Install the <amp-bind> extension" -->
   <script async custom-element="amp-carousel" src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js"></script>
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
   <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
   <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.1.js"></script>
+  <script>window.addEventListener(
+    "message",
+    e => {
+      if ('spkt.io'.indexOf(e.origin) === -1) return;
+      console.log('tester '+ e.message)
+      const key = e.message ? "message" : "data";
+      console.log('tester 3'+ e[key])
+      const data = e[key];
 
+      if (data === "sk-fail") {
+        setIframeDisplay("none");
+      }
+    },
+    false
+  );</script>
   <style amp-custom>
     /*** uncss> filename: https://code.getmdl.io/1.3.0/material.indigo-pink.min.css ***/
     /**
@@ -147,8 +162,18 @@ limitations under the License.
   </header>
 
   <div id="container">
-    <h5 class="title">MEN'S COTTON CREW NECK<br>LONG SLEEVE T-SHIRT</h5>
-    <h6 class="rating"><span class="mdl-color-text--red">★★★★☆</span> <span class="mdl-color-text--grey">(14)</span></h6>
+    <h5 class="title">SPEECHKING PLAYER</h5>
+
+    <!-- <amp-script development src="https://cdn.jsdelivr.net/npm/@speechkit/speechkit-audio-player@latest/dist/speechkit-iframe-helper.js"> -->
+
+
+    <!-- </amp-script> -->
+    <!-- window.parent.postMessage(
+      sentinel: 'amp',
+      type: 'embed-size',
+      height: document.body.scrollHeight
+    , '*'); -->
+      <p>end of spkt</p>
 
     <amp-carousel type="slides" layout="fixed-height" height=250 id="carousel">
       <!-- TODO: "Changing images in amp-carousel" -->
@@ -156,6 +181,9 @@ limitations under the License.
       <amp-img width=300 height=375 src="./shirts/black.jpg"></amp-img>
       <amp-img width=400 height=500 src="./shirts/black.jpg"></amp-img>
     </amp-carousel>
+
+    <h6 class="rating"><span class="mdl-color-text--red">★★★★☆</span> <span class="mdl-color-text--grey">(14)</span></h6>
+
 
     <!-- TODO: "Add a slide indicator" -->
     <p class="dots">
@@ -248,6 +276,14 @@ limitations under the License.
         <template type="amp-mustache">Error adding to cart: {{error}}</template>
       </div>
     </form>
+    <amp-iframe id="speechkit-io-iframe" sandbox="allow-scripts allow-same-origin allow-popups" src="https://app.speechkit.io/api/v2/projects/3594/podcasts/iframe.html" resizable  frameborder="0" scrolling="no" height="50px" width="auto" >
+      <div overflow tabindex=0 role=button aria-label="">Read more...</div>
+      <amp-img layout="fill" src="https://s3-eu-west-1.amazonaws.com/speechkit-js/logo.svg" placeholder></amp-img>
+      <div overflow
+          tabindex="0"
+          role="button"
+          aria-label="Show more">Click to show more</div>
+    </amp-iframe>
   </div>
 </body>
 </html>
