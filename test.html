@@ -28,13 +28,14 @@ p {
   <script>
 (function (d, w) {
   setTimeout(function(){
+      console.log('send resize post message!')
     w.parent.postMessage({
       sentinel: 'amp',
       type: 'embed-size',
       height: 10,
       width: 40
     }, '*');
-  },4000);
+  },5000);
 })(document, window);
   </script>
   </body>
