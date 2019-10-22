@@ -28,15 +28,20 @@ p {
   <script>
 (function (d, w) {
 
+    setTimeout(function(){
+    var a=document.getElementById('box');
+    a.style.height = '4px';
+    },2000);
   setTimeout(function(){
     console.log('asd',document.body.scrollHeight)
     w.parent.postMessage({
-      sentinel: 'amp',
-      type: 'embed-size',
-      height: document.body.scrollHeight
-    }, '*');
-  },5000);
-})(document, window);
+        sentinel: 'amp',
+        type: 'embed-size',
+        height: document.body.scrollHeight
+        }, '*');
+    },5000);
+  })(document, window);
+
   </script>
   </body>
 </html>
